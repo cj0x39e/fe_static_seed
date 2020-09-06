@@ -1,69 +1,98 @@
-const path = require('path')
-const ejs = require('ejs');
+var path = require('path')
+var webpack = require('webpack')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
+const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
-  mode: 'development',
-  entry: path.resolve('./views/test/test.entry.js'),
-
+  mode: process.env.NODE_ENV,
+  entry: path.resolve(__dirname, '../pages/test/main.js'),
+  output: {
+    path: path.resolve(__dirname, '../dist'),
+    publicPath: '/',
+    filename: 'build.js'
+  },
   module: {
     rules: [
       {
-        test: /\.(html|ejs)$/i,
-        use: [
-          'file-loader?name=[name].[ext]',
-          'extract-loader',
-          {
-            loader: 'html-loader',
-            options: {
-              // preprocessor: (content, loaderContext) => {
-              //   let result;
-    
-              //   try {
-              //     result = ejs.render(content, {
-              //       // inject data
-              //       root: path.resolve('./ui-components/')
-              //     });
-              //   } catch (error) {
-              //     loaderContext.emitError(error);
-    
-              //     return content;
-              //   }
-    
-              //   return result;
-              // },
-            }
-          },
-          // {
-          //   loader: 'ejs-html-loader',
-          //   options: {
-          //     title: 'The Naked Ant',
-          //     // variable: 'data'
-          //   }
-          // }
-        ],
+        test: /\.vue$/,
+        loader: 'vue-loader'
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]?[hash]'
+        }
+      },
+      {
+        test: /\.css$/,
         use: [
-          'file-loader?name=[name].css',
-          'extract-loader',
-          // Translates CSS into CommonJS
-          'css-loader',
-          // Compiles Sass to CSS
-          'sass-loader',
-        ],
+          'vue-style-loader',
+          'css-loader'
+        ]
       }
     ]
   },
-
-  output: {
-    filename: 'index.js',
-    path: path.resolve('./dist'),
-    /* IMPORTANT!
-     * You must compile to UMD or CommonJS
-     * so it can be required in a Node context: */
-    libraryTarget: 'umd'
+  resolve: {
+    alias: {
+      'vue$': 'vue/dist/vue.esm.js'
+    }
   },
+  devServer: {
+    historyApiFallback: true,
+    noInfo: false,
+  },
+  devtool: '#eval-source-map',
+  plugins: [
+    new VueLoaderPlugin(),
+  ]
+}
+console.log('process.env.NODE_ENV:', process.env.NODE_ENV)
+if (process.env.NODE_ENV === 'production') {
+  module.exports.devtool = '#source-map'
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'PRODUCTION prerender-spa-plugin',
+      template: 'index.html',
+      filename: path.resolve(__dirname, 'dist/index.html')
+    }),
+    new PrerenderSPAPlugin({
+      staticDir: path.join(__dirname, 'dist'),
+      routes: [ '/', '/about', '/contact' ],
 
-  // watch: true
-};
+      renderer: new Renderer({
+        inject: {
+          foo: 'bar'
+        },
+        headless: true,
+        renderAfterDocumentEvent: 'render-event'
+      })
+    })
+  ])
+} else {
+  // NODE_ENV === 'development'
+  module.exports.plugins = (module.exports.plugins || []).concat([
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"development"'
+      }
+    }),
+    new HtmlWebpackPlugin({
+      title: 'DEVELOPMENT prerender-spa-plugin',
+      template: 'index.html',
+      filename: 'index.html'
+    }),
+  ])
+}
