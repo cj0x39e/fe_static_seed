@@ -85,7 +85,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist
 
 # Gatsby files
 .cache/
@@ -120,6 +120,8 @@ dist
 docs/_book
 
 # TODO: where does this rule come from?
-test/
+# test/
 
 # End of https://www.toptal.com/developers/gitignore/api/node,vue
+
+.tuliu

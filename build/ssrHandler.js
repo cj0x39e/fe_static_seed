@@ -9,3 +9,5 @@ const context = {};
 renderer.renderToString(context, (err, html) => {
   console.log(html)
 })
+
+console.log('okkk')

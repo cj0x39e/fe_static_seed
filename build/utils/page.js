@@ -3,7 +3,7 @@ const printer = require('./printer')
 /**
  * 通过命令行获取编译页面参数
  */
-const getViewName = (argv) => { 
+const getPageName = (argv) => { 
   const viewFlag = ['-v', '--view']
   let name = null
 
@@ -26,5 +26,5 @@ const getViewName = (argv) => {
 
 
 module.exports = {
-  getViewName
+  getPageName
 }
