@@ -9,21 +9,27 @@ const { tempDir, pagesDir, entryFileName } = require('./utils/common')
 module.exports = async function (options) {
   const { pageName } = options
 
-  // const appPath = path.relative(tempDir, path.join(pagesDir, pageName, `${pageName}.vue`));
-  // const es5JsPath = path.relative(tempDir, path.join(pagesDir, pageName, `${pageName}.es5.js`)); 
-  
-
   let entryCode = `
     import Vue from 'vue'
     import App from '~/pages/${pageName}/${pageName}.vue'
-    import '~/pages/${pageName}/${pageName}.es5.js'
   `
 
   if (process.env.NODE_ENV === 'development') {
     entryCode += `
+      import '~/pages/${pageName}/${pageName}.es5.js'
       new Vue({
         render: h => h(App)
       }).$mount('#app')
+    `
+  }
+
+  if (process.env.NODE_ENV === 'production') {
+    entryCode += `
+    export default function createApp (context) {
+      return new Vue({
+        render: h => h(App)
+      })
+    }
     `
   }
 

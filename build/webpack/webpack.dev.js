@@ -2,13 +2,9 @@ const path = require('path')
 const { merge } = require('webpack-merge')
 const baseConfig = require('./webpack.base.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const { entryFileName } = require('../utils/common')
 
 
 module.exports = merge(baseConfig, {
-  entry: {
-    main: path.resolve(__dirname, '../../\.tuliu/entry.js')
-  },
 
   devtool: 'source-map',
 

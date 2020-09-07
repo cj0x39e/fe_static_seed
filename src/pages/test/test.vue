@@ -1,6 +1,6 @@
 <template>
   <div class="test">
-    Hello world11112121212asdf
+    hihihi
     <my-button />
   </div>
   
@@ -16,8 +16,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.test {
-  background-color: red;
-}
-</style>
+

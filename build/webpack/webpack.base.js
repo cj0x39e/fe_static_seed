@@ -4,8 +4,11 @@ const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   mode: process.env.NODE_ENV,
+  entry: {
+    main: path.resolve(__dirname, '../../\.tuliu/entry.js')
+  },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, '../../dist'),
     publicPath: '/',
   },
   module: {
