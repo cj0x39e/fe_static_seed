@@ -1,7 +1,8 @@
 const path = require('path')
 const { merge } = require('webpack-merge')
-const baseConfig = require('./webpack.base.js')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const baseConfig = require('./webpack.base.js')
+const { tempDir } = require('../utils/common')
 
 
 module.exports = merge(baseConfig, {
@@ -10,7 +11,7 @@ module.exports = merge(baseConfig, {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../../static/index.html'),
+      template: path.join(tempDir, '/index.html'),
       inject: false
     })
   ],
