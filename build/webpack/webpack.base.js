@@ -47,14 +47,58 @@ module.exports = {
             options: {
               modules: {
                 localIdentName: '[name]__[local]--[hash:base64:5]'
-              }
+              },
+              importLoaders: 2
             }
           },
           'postcss-loader',
           'sass-loader',
         ]
-      }
+      },
+      // {
+      //   test: /\.((c|sa|sc)ss)$/i,
+      //   include: /(pages|styles)/,
+      //   use: [
+      //     {
+      //       loader: 'file-loader',
+      //       options: {
+      //         name: '[name].css'
+      //       }
+      //     },
+      //     'extract-loader',
+      //     {
+      //       loader: 'css-loader',
+      //       options: {
+      //         modules: {
+      //           localIdentName: '[name]__[local]--[hash:base64:5]'
+      //         },
+      //         importLoaders: 2
+      //       }
+      //     },
+      //     'postcss-loader',
+      //     'sass-loader',
+      //   ]
+      // }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        uiComponentsStyles: {
+          name: 'ui-components',
+          test: (module, chunks, entry = 'foo') => {
+            // console.log('m.constructor.name', )
+            const isC = module.constructor.name === 'CssModule' && /ui-components/.test(module.context)
+            if (isC) {
+              console.log(module)
+            }
+            return isC
+          },
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
   },
   resolve: {
     alias: {
