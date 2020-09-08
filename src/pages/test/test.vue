@@ -1,5 +1,5 @@
 <template>
-  <div class="test">
+  <div :class="$style.test">
     hihihi
     <my-button />
   </div>
@@ -17,3 +17,8 @@ export default {
 </script>
 
 
+<style lang="scss" module>
+.test {
+  background-color: red;
+}
+</style>

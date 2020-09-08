@@ -23,14 +23,16 @@ module.exports = function (data) {
 
       const $ = cheerio.load(str)
 
+      $('head').append('<link rel="stylesheet" href="./main.css" />')
+
       if (process.env.NODE_ENV === 'development') {
         const pageName = await config.getConfigByKey('pageName')
         
         // add vue init container
         $('body').prepend('<div id="app"></div>')
 
-        $('#app').after('<script src="/main.js"></script>')
-        $('body').append(`<script src="/${pageName}.es5.js"></script>`)
+        $('#app').after('<script src="./main.js"></script>')
+        $('body').append(`<script src="./${pageName}.es5.js"></script>`)
       }
 
       if (process.env.NODE_ENV === 'production') {

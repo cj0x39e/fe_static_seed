@@ -1,5 +1,7 @@
 <template>
-  <div>按钮组件测试</div>
+  <div :class="[$style.fz, 'test']">
+    <div :class="$style.ab">45564</div>
+  </div>
 </template>
 
 <script>
@@ -8,6 +10,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" module>
+.fz {
+  font-size: 100px;
+  &:hover {
+    font-size: 50px;
+  }
+  .ab {
+    color: white;
+  }
+}
 
 </style>
