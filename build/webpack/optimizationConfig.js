@@ -1,21 +1,25 @@
+const constants = require('../constants')
 
+/**
+ * 分离样式到单个文件
+ */
 
 module.exports = {
   optimization: {
     splitChunks: {
       cacheGroups: {
         uiComponentsStyles: {
-          name: 'ui-components',
-          test: (module, chunks, entry = 'foo') => {
-            return module.constructor.name === 'CssModule' && /ui-components/.test(module.context)
+          name: constants.UI_COMPONENTS,
+          test: (module, chunks, entry) => {
+            return module.constructor.name === 'CssModule' && (new RegExp(constants.UI_COMPONENTS)).test(module.context)
           },
           chunks: 'all',
           enforce: true
         },
         commonStyles: {
-          name: 'common',
-          test: (module, chunks, entry = 'foo') => {
-            return module.constructor.name === 'CssModule' && /common-styles/.test(module.context)
+          name: constants.COMMON_STYLES,
+          test: (module, chunks, entry) => {
+            return module.constructor.name === 'CssModule' && (new RegExp(constants.COMMON_STYLES)).test(module.context)
           },
           chunks: 'all',
           enforce: true

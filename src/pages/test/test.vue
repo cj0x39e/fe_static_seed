@@ -21,5 +21,7 @@ export default {
 <style lang="scss" module>
 .test {
   background-color: red;
+  height: 100px;
+  font-size: 10px;
 }
 </style>

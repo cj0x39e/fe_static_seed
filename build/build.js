@@ -11,13 +11,8 @@ const shellEnhance = require('./utils/shellEnhance');
   await frontTask()
 
   const configPath = path.join(__dirname, './webpack/webpack.build.js');
-  shellEnhance.exec(`npx cross-env NODE_ENV=production  webpack --config ${configPath}`, () => {
-    
-  })
+  shellEnhance.exec(`npx cross-env NODE_ENV=production  webpack --config ${configPath}`, () => {})
 
   const ssrConfigPath = path.join(__dirname, './webpack/webpack.ssr.js');
-  shellEnhance.exec(`npx cross-env NODE_ENV=production  webpack --config ${ssrConfigPath}`, () => {
-    const ssrHandleJS = path.join(__dirname, './ssrHandler.js');
-    shellEnhance.exec(`node ${ssrHandleJS}`)
-  })
+  shellEnhance.exec(`npx cross-env NODE_ENV=production  webpack --config ${ssrConfigPath}`, () => {})
  })()
