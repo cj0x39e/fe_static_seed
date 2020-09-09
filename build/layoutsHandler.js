@@ -50,8 +50,15 @@ module.exports = function (data) {
       }
 
       if (process.env.NODE_ENV === 'production') {
+        $('head').append(`
+          <link rel="stylesheet" href="./css/${constants.COMMON_STYLES}.css" />
+          <link rel="stylesheet" href="./css/${constants.UI_COMPONENTS}.css" />
+          <link rel="stylesheet" href="./css/${pageName}.css" />
+        `)
+
         // https://ssr.vuejs.org/zh/guide/#using-a-page-template
         $('body').prepend('<!--vue-ssr-outlet-->')
+        $('body').append(`<script src="./js/${pageName}.es5.js"></script>`)
       }
 
       str = $.html()

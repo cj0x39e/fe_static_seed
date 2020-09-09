@@ -13,12 +13,11 @@ module.exports = async function (options) {
     import '~/common-styles/main.scss'
     import Vue from 'vue'
     import App from '~/pages/${pageName}/${pageName}.vue'
+    import '~/pages/${pageName}/${pageName}.es5.js'
   `
 
   if (process.env.NODE_ENV === 'development') {
     entryCode += `
-      import '~/pages/${pageName}/${pageName}.es5.js'
-      console.log('init ok')
       new Vue({
         render: h => h(App)
       }).$mount('#app')
