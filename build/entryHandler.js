@@ -10,7 +10,7 @@ module.exports = async function (options) {
   const { pageName } = options
 
   let entryCode = `
-    import '~/styles/main.scss'
+    import '~/common-styles/main.scss'
     import Vue from 'vue'
     import App from '~/pages/${pageName}/${pageName}.vue'
   `

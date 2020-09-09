@@ -15,7 +15,7 @@ module.exports = async function main () {
   // const pageName = pageUtil.getViewName(process.argv)
   const pageName = 'test'
 
-  await config.setConfigByKey('pageName', pageName)
+  config.setConfigByKey('pageName', pageName)
   
   await layoutsHandler()
 

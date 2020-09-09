@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div :class="$style.test"></div>
+  <div :class="$style.test">
+    <div></div>
     hihihi
     <my-button />
   </div>

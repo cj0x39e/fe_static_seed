@@ -15,7 +15,7 @@ const context = {};
 renderer.renderToString(context, async(err, html) => {
   if (err) throw err
 
-  const pageName = await config.getConfigByKey('pageName')
+  const pageName = config.getConfigByKey('pageName')
   const htmlPath = path.join(distDir, `${pageName}.html`)
   
   fs.writeFileSync(htmlPath, pretty(html), 'utf-8')

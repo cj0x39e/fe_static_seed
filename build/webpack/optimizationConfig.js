@@ -12,10 +12,10 @@ module.exports = {
           chunks: 'all',
           enforce: true
         },
-        globalStyles: {
-          name: 'global',
+        commonStyles: {
+          name: 'common',
           test: (module, chunks, entry = 'foo') => {
-            return module.constructor.name === 'CssModule' && /styles/.test(module.context)
+            return module.constructor.name === 'CssModule' && /common-styles/.test(module.context)
           },
           chunks: 'all',
           enforce: true

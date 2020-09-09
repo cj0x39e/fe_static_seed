@@ -1,7 +1,7 @@
 /**
  * 配置信息存取器
  */
-const fs = require('fs').promises
+const fs = require('fs')
 const path = require('path')
 const { tempDir } = require('./common')
 
@@ -9,10 +9,10 @@ const configFileName = 'config.json'
 const configPath = path.join(tempDir, configFileName)
 let isInit = true
 
-const getConfigByFile = async () => {
+const getConfigByFile = () => {
   let result = {}
   try {
-    result = await fs.readFile(configPath, 'utf-8')
+    result = fs.readFileSync(configPath, 'utf-8')
     result = JSON.parse(result)
   } catch (err) {
     // nothing
@@ -20,28 +20,29 @@ const getConfigByFile = async () => {
   return result
 }
 
-const setConfigToFile = async (data) => {
+
+const setConfigToFile = (data) => {
   try {
-    await fs.writeFile(configPath, JSON.stringify(data), 'utf-8')
+    fs.writeFileSync(configPath, JSON.stringify(data), 'utf-8')
   } catch (err) {
     throw err
   }
 }
 
-const setConfigByKey = async (key, value) => {
+const setConfigByKey = (key, value) => {
   let data = {}
   if (isInit) {
     isInit = false
   } else {
-    data = await getConfigByFile()
+    data = getConfigByFile()
   }
   
   data[key] = value
-  await setConfigToFile(data)
+  setConfigToFile(data)
 }
 
-const getConfigByKey = async (key) => {
-  const data = await getConfigByFile()
+const getConfigByKey = (key) => {
+  const data = getConfigByFile()
   return data[key]
 }
 
