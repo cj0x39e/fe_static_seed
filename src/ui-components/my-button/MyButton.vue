@@ -10,4 +10,14 @@ export default {
 }
 </script>
 
-<style src="./my-button.module.scss"></style>
+<style lang="scss" module>
+.fz {
+  font-size: 100px;
+  &:hover {
+    font-size: 50px;
+  }
+  .ab {
+    color: white;
+  }
+}
+</style>

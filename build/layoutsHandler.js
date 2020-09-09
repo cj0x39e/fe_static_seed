@@ -24,13 +24,21 @@ module.exports = function (data) {
       const pageName = await config.getConfigByKey('pageName')
       const $ = cheerio.load(str)
 
+      $('head').append('<link rel="stylesheet" href="./global.css" />')
       $('head').append('<link rel="stylesheet" href="./ui-components.css" />')
       $('head').append('<link rel="stylesheet" href="./main.css" />')
-      $('head').append(`<link rel="stylesheet" href="./${pageName}.css" />`)
+      // $('head').append(`<link rel="stylesheet" href="./${pageName}.css" />`)
 
       if (process.env.NODE_ENV === 'development') {
         // add vue init container
         $('body').prepend('<div id="app"></div>')
+        
+        //  webpack bug, 抽取 css 产生的多余的 js 需要引入
+        // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/85
+        $('#app').after('<!--webpack use-->')
+        $('#app').after('<script src="./ui-components.js"></script>')
+        $('#app').after('<script src="./global.js"></script>')
+        $('#app').after('<!--/webpack use-->')
 
         $('#app').after('<script src="./main.js"></script>')
         $('body').append(`<script src="./${pageName}.es5.js"></script>`)

@@ -1,11 +1,13 @@
 const path = require('path')
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.base.js')
+const optimizationConfig = require('./optimizationConfig.js')
 const { tempDir } = require('../utils/common')
 
 
-module.exports = merge(baseConfig, {
+module.exports = merge(baseConfig, optimizationConfig, {
 
   devtool: 'source-map',
 
@@ -13,7 +15,8 @@ module.exports = merge(baseConfig, {
     new HtmlWebpackPlugin({
       template: path.join(tempDir, '/index.html'),
       inject: false
-    })
+    }),
+    new webpack.NamedModulesPlugin()
   ],
   devServer: {
     contentBase: path.resolve(__dirname, '../../static/'),

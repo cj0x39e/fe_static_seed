@@ -18,6 +18,7 @@ module.exports = async function (options) {
   if (process.env.NODE_ENV === 'development') {
     entryCode += `
       import '~/pages/${pageName}/${pageName}.es5.js'
+      console.log('init ok')
       new Vue({
         render: h => h(App)
       }).$mount('#app')
