@@ -74,7 +74,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: '[name]__[local]--[hash:base64:5]'
+                localIdentName: '[local]_[hash:base64:12]'
               },
               importLoaders: 2
             }

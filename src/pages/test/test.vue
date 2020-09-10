@@ -3,17 +3,20 @@
     <div></div>
     hihihi
     <my-button />
-    <img src="../../asset/images/tuliu_logo.png">
+    <img src="../../asset/china@2x.jpg">
+    <my-dialog />
   </div>
   
 </template>
 
 <script>
-import MyButton from '~/ui-components/my-button/MyButton.vue'
+import MyButton from '~/ui-components/my-button/my-button.vue'
+import MyDialog from '~/ui-components/my-dialog/my-dialog.vue'
 
 export default {
   components: {
-    MyButton
+    MyButton,
+    MyDialog
   }
 }
 </script>
@@ -22,7 +25,6 @@ export default {
 <style lang="scss" module>
 .test {
   background-color: red;
-  background-image: url('../../asset/images/risk.png');
   height: 100px;
   font-size: 10px;
 }
