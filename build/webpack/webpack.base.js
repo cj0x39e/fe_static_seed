@@ -36,10 +36,35 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+
+              limit: 2048, // 小于 2 kb 转为 base 64
+
+              /**
+               * for fallback "file-loader" option
+               */
+              name: (resourcePath) => {
+                let dirList = resourcePath.split(path.sep)
+                const imagesDir = 'images'
+                const imagesIndex = dirList.indexOf(imagesDir)
+                if (imagesIndex === -1) {
+                  throw new Error(`图片必须放置在 ${imagesDir} 文件夹中！！！`)
+                } else {
+                  // 去除绝对路径和文件名
+                  dirList = dirList.slice(imagesIndex, -1)
+                  return `${dirList.join('/')}/[name].[contenthash:6].[ext]`
+                }
+              },
+
+              // https://github.com/vuejs/vue-loader/issues/1612#issuecomment-614542603
+              // for vue 
+              esModule: false
+            },
+          }
+        ]
       },
       {
         test: /\.((c|sa|sc)ss)$/i,

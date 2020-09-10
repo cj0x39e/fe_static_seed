@@ -3,6 +3,7 @@
     <div></div>
     hihihi
     <my-button />
+    <img src="../../asset/images/tuliu_logo.png">
   </div>
   
 </template>
@@ -21,6 +22,7 @@ export default {
 <style lang="scss" module>
 .test {
   background-color: red;
+  background-image: url('../../asset/images/risk.png');
   height: 100px;
   font-size: 10px;
 }

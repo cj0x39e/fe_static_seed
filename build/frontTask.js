@@ -13,7 +13,7 @@ const entryHandler = require('./entryHandler')
 module.exports = async function main () {
   printer.info('') // 打印 banner
   // const pageName = pageUtil.getViewName(process.argv)
-  const pageName = 'test'
+  const pageName = 'download'
 
   config.setConfigByKey('pageName', pageName)
   

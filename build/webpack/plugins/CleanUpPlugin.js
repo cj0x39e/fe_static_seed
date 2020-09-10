@@ -15,10 +15,10 @@ CleanUpPlugin.prototype.apply = function (compiler) {
     shell.cp('-R', path.resolve(staticSrc, `./css/*`), path.resolve(distSrc, `./css`));
     shell.cp('-R', path.resolve(staticSrc, `./js/*`), path.resolve(distSrc, `./js`));
 
-    // // move css file to css directory
+    // move css file to css directory
     shell.mv(path.resolve(distSrc, `./*.css`), path.resolve(distSrc, `./css`))
 
-    // // remove unused files
+    // remove unused files
     shell.rm('-rf', path.resolve(distSrc, `./${constants.COMMON_STYLES}.js`))
     shell.rm('-rf', path.resolve(distSrc, `./${constants.UI_COMPONENTS}.js`))
     shell.rm('-rf', path.resolve(distSrc, `./${pageName}.js`))
