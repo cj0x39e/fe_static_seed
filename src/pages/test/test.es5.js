@@ -1,3 +1,4 @@
-$(function () {
+$(function() {
+  // $('body').hide()
   // $('body').hide()
 })

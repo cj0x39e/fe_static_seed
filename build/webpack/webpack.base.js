@@ -1,6 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 const config = require('../utils/config')
@@ -20,19 +20,30 @@ module.exports = {
     rules: [
       {
         test: /\.vue$/,
-        loader: 'vue-loader'
+        use: [
+          'vue-loader',
+          'eslint-loader'
+        ]
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        use: [
+          'babel-loader',
+          'eslint-loader'
+        ],
         exclude: /(node_modules|.\.es5\.js)/
       },
       {
         test: /\.es5\.js$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]'
-        }
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }
+          },
+          'eslint-loader'
+        ]
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
@@ -60,9 +71,9 @@ module.exports = {
               },
 
               // https://github.com/vuejs/vue-loader/issues/1612#issuecomment-614542603
-              // for vue 
+              // for vue
               esModule: false
-            },
+            }
           }
         ]
       },
@@ -80,7 +91,7 @@ module.exports = {
             }
           },
           'postcss-loader',
-          'sass-loader',
+          'sass-loader'
         ]
       }
     ]
@@ -94,7 +105,7 @@ module.exports = {
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-    }),
+      filename: '[name].css'
+    })
   ]
 }

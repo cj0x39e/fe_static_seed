@@ -1,12 +1,12 @@
 <template>
   <div :class="$style.test">
-    <div></div>
+    <div />
     hihihi
     <my-button />
     <img src="../../asset/china@2x.jpg">
     <my-dialog />
   </div>
-  
+
 </template>
 
 <script>
@@ -21,8 +21,7 @@ export default {
 }
 </script>
 
-
-<style lang="scss" module>
+<style lang="scss" module>
 .test {
   background-color: red;
   height: 100px;
