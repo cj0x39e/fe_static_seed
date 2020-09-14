@@ -16,23 +16,31 @@ module.exports = async function (options) {
     import '~/pages/${pageName}/${pageName}.es5.js'
   `
 
-  if (process.env.NODE_ENV === 'development') {
-    entryCode += `
-      new Vue({
-        render: h => h(App)
-      }).$mount('#app')
-    `
-  }
+  // if (process.env.NODE_ENV === 'development') {
+  //   entryCode += `
+  //     new Vue({
+  //       render: h => h(App)
+  //     }).$mount('#app')
+  //   `
+  // }
 
-  if (process.env.NODE_ENV === 'production') {
-    entryCode += `
+  // if (process.env.NODE_ENV === 'production') {
+  //   entryCode += `
+  //   export default function createApp (context) {
+  //     return new Vue({
+  //       render: h => h(App)
+  //     })
+  //   }
+  //   `
+  // }
+
+  entryCode += `
     export default function createApp (context) {
       return new Vue({
         render: h => h(App)
       })
     }
     `
-  }
 
   try {
     await fs.writeFile(entryFileName, entryCode, 'utf-8')

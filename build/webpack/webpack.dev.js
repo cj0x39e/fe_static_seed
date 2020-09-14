@@ -7,6 +7,7 @@ const optimizationConfig = require('./optimizationConfig.js')
 const { tempDir } = require('../utils/common')
 
 module.exports = merge(baseConfig, optimizationConfig, {
+  mode: 'development',
 
   devtool: 'source-map',
 

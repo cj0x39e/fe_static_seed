@@ -33,7 +33,8 @@ module.exports = function (data) {
         `)
 
         // add vue init container
-        $('body').prepend('<div id="app"></div>')
+        // $('body').prepend('<div id="app"></div>')
+        $('body').prepend('<!--vue-ssr-outlet-->')
         
         //  webpack bug, 抽取 css 产生的多余的 js 需要引入
         // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/85
