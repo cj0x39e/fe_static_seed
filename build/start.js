@@ -14,17 +14,23 @@ const ssrConfig = require('./webpack/webpack.ssr')
 
   await frontTask()
 
+  const startDev = () => {
+    // dev server
+    const devCompiler = webpack(devConfig)
+    const server = new WebpackDevServer(devCompiler, devConfig.devServer);
+    server.listen(devConfig.devServer.port, devConfig.devServer.host, () => {
+      console.log('Starting server on http://localhost:1024');
+    });
+  }
+
   // ssr 
+  let isStartDev = false
   const ssrCompiler = webpack(ssrConfig)
   ssrCompiler.watch({}, (err, stats) => {
+    if (!isStartDev) {
+      isStartDev = true
+      startDev()
+    }
     console.log('ssr build')
   })
-
-  // dev server
-  // const devCompiler = webpack(devConfig)
-  // const server = new WebpackDevServer(devCompiler, devConfig.devServer);
-  // server.listen(devConfig.devServer.port, devConfig.devServer.host, () => {
-  //   console.log('Starting server on http://localhost:1024');
-  // });
- 
 })()

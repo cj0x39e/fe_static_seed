@@ -1,4 +1,11 @@
 $(function() {
-  // $('body').hide()
-  // $('body').hide()
+  
+  new Vue({
+    el: '#app',
+    data: function () {
+      return {
+        isShow: false
+      }
+    }
+  })
 })

@@ -12,7 +12,7 @@ module.exports = function () {
   
   const bundlePath = path.join(distDir, 'vue-ssr-server-bundle.json')
   const renderer = createBundleRenderer(bundlePath, {
-    template: fs.readFileSync(path.join(tempDir, '/index.html'), 'utf-8')
+    template: fs.readFileSync(path.join(tempDir, '/layout.html'), 'utf-8')
   })
 
   const context = {};
@@ -21,7 +21,7 @@ module.exports = function () {
     if (err) throw err
 
     const pageName = config.getConfigByKey('pageName')
-    const htmlPath = path.join(distDir, `${pageName}.html`)
+    const htmlPath = path.join(tempDir, `index.html`)
     
     fs.writeFileSync(htmlPath, pretty(html), 'utf-8')
   })

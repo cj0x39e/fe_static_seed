@@ -4,10 +4,19 @@ const { merge } = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const baseConfig = require('./webpack.base.js')
 const optimizationConfig = require('./optimizationConfig.js')
-const { tempDir } = require('../utils/common')
+const { tempDir, entryFileName } = require('../utils/common')
+const config = require('../utils/config')
+const pageName = config.getConfigByKey('pageName')
 
 module.exports = merge(baseConfig, optimizationConfig, {
   mode: 'development',
+  entry: {
+    [pageName]: entryFileName,
+    'jscomponent': path.resolve(__dirname, '../jsComponentEntry.js')
+  },
+  externals: {
+    vue: 'Vue'
+  },
 
   devtool: 'source-map',
 
@@ -26,7 +35,7 @@ module.exports = merge(baseConfig, optimizationConfig, {
     port: 1024,
     open: true,
     compress: true,
-    stats: 'errors-only',
+    // stats: 'errors-only',
     // 配置 host 为 0.0.0.0 后，不配置 public 在 windows 上默认打开的地址无法访问
     // 所以配置这个解决，参考 https://github.com/webpack/webpack-dev-server/issues/1204
     public: `localhost:${1024}`

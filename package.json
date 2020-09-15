@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "autoprefixer": "^9.8.6",
+    "lodash": "^4.17.20",
     "pretty": "^2.0.0",
     "vant": "^2.10.4",
     "vue": "^2.6.12",

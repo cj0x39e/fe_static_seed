@@ -3,15 +3,9 @@ var webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const config = require('../utils/config')
-
-const pageName = config.getConfigByKey('pageName')
 
 module.exports = {
   mode: process.env.NODE_ENV,
-  entry: {
-    [pageName]: path.resolve(__dirname, '../../\.tuliu/entry.js')
-  },
   output: {
     path: path.resolve(__dirname, '../../dist'),
     publicPath: '/'

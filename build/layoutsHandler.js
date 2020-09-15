@@ -33,12 +33,11 @@ module.exports = function (data) {
         `)
 
         // add vue init container
-        // $('body').prepend('<div id="app"></div>')
-        $('body').prepend('<!--vue-ssr-outlet-->')
+        $('body').prepend('<div id="app"><!--vue-ssr-outlet--></div>')
         
         //  webpack bug, 抽取 css 产生的多余的 js 需要引入
         // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/85
-        $('#app').after(`
+        $('body').append(`
           <!--开发环境框架使用，无需关注-->
           <script src="./${constants.COMMON_STYLES}.js"></script>
           <script src="./${constants.UI_COMPONENTS}.js"></script>
@@ -47,6 +46,7 @@ module.exports = function (data) {
         `)
 
         // 需要放在 body 的最后
+        $('body').append(`<script src="./jscomponent.js"></script>`)
         $('body').append(`<script src="./${pageName}.es5.js"></script>`)
       }
 
@@ -59,13 +59,14 @@ module.exports = function (data) {
 
         // https://ssr.vuejs.org/zh/guide/#using-a-page-template
         $('body').prepend('<!--vue-ssr-outlet-->')
+        $('body').append(`<script src="./js/jscomponent.js"></script>`)
         $('body').append(`<script src="./js/${pageName}.es5.js"></script>`)
       }
 
       str = $.html()
   
       try {
-        const filePath = path.join(tempDir, '/index.html')
+        const filePath = path.join(tempDir, '/layout.html')
         fs.writeFileSync(filePath, str, 'utf8')
         resolve([null, null])
       } catch (err) {
