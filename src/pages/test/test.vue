@@ -1,16 +1,16 @@
-<template>
-  <div :class="$style.test">
-    <div />
+<template lang="module-html">
+  <div class="test">
+    <div/>
     hihihi
     compiler1112
     <template v-pre>
       <span @click="isShow=true">显示1111212aaaaaaa</span>
       <span v-if="isShow">隐藏</span>
-      <test-button></test-button>
+      <test-button :class="'test1'"/>
     </template>
-    
+
     <!-- <template v-pre>
-      <vant-button :class="$style.test">aaaa</vant-button>  
+      <vant-button :class="$style.test">aaaa</vant-button>
       <img src="../../asset/images/download/logo@2x.png">
       <div v-for="i of items" :key="i">{{a}}</div>
     </template> -->
@@ -32,11 +32,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" module>
-.test {
-  background-color: red;
-  height: 100px;
-  font-size: 10px;
-}
-</style>

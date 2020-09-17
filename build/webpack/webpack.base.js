@@ -15,8 +15,20 @@ module.exports = {
       {
         test: /\.vue$/,
         use: [
+          // {
+          //   loader: path.resolve(__dirname, './loaders/module-css.js')
+          // },
           'vue-loader',
           'eslint-loader'
+        ]
+      },
+      {
+        test: /\.module-html$/,
+        use: [
+          'extract-loader',
+          {
+            loader: path.resolve(__dirname, './loaders/module-html.js')
+          }
         ]
       },
       {

@@ -7,7 +7,7 @@
 <script>
 export default {
   methods: {
-    handleClick () {
+    handleClick() {
       alert('ok')
     }
   }
