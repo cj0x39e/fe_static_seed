@@ -3,6 +3,7 @@ var webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const qs = require('querystring')
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -15,9 +16,6 @@ module.exports = {
       {
         test: /\.vue$/,
         use: [
-          // {
-          //   loader: path.resolve(__dirname, './loaders/module-css.js')
-          // },
           'vue-loader',
           'eslint-loader'
         ]
@@ -25,7 +23,6 @@ module.exports = {
       {
         test: /\.module-html$/,
         use: [
-          'extract-loader',
           {
             loader: path.resolve(__dirname, './loaders/module-html.js')
           }

@@ -43,6 +43,7 @@
     "postcss-load-config": "^2.1.0",
     "postcss-loader": "^4.0.0",
     "postcss-pxtorem": "^5.1.1",
+    "querystring": "^0.2.0",
     "raw-loader": "^4.0.1",
     "require-from-string": "^2.0.2",
     "sass": "^1.26.10",

@@ -1,10 +1,12 @@
-<template>
-  <div :class="$style.bg" @click="handleClick">
-    asdfasdfasdf
+<template lang="module-html">
+  <div class="bg" @click="handleClick">
+    test-button
   </div>
 </template>
 
 <script>
+import './test-button.module.scss'
+
 export default {
   methods: {
     handleClick() {
@@ -13,10 +15,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" module>
-.bg {
-  background-color: black;
-}
-</style>
-
