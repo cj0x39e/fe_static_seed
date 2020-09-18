@@ -8,6 +8,10 @@
         <span @click="isShow=true">显示1111212aaaaaaa</span>
         <span v-if="isShow">隐藏</span>
         <test-button :class="'test1'"/>
+        <test-button :class=" {test: true}"/>
+        <test-button :class=" {'test': true}"/>
+        <!-- <test-button :class="{ test: isOK }"/> -->
+        <!-- <test-button :class="['a', xxx ? 'a' : 'b']"/> -->
       </div>
     </template>
 

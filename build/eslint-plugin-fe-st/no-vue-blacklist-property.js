@@ -10,21 +10,20 @@ const WHITE_LIST = [
 ]
 
 const checkProperties = (properties, context, node) => {
-
   try {
-    for(let i = 0; i < properties.length; i++) {
+    for (let i = 0; i < properties.length; i++) {
       const property = properties[i]
-      if (property.type === 'Property' && 
+      if (property.type === 'Property' &&
         property.key.type === 'Identifier' &&
-        property.key.name && 
+        property.key.name &&
         !WHITE_LIST.includes(property.key.name)
       ) {
         context.report({
           node,
           message: '请不要使用 Vue 与 HTML 交互的相关属性: {{ name }}！！',
           data: { name: property.key.name }
-        });
-        break;
+        })
+        break
       }
     }
   } catch (e) {

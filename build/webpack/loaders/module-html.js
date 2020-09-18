@@ -25,18 +25,17 @@ module.exports = function(templateSource) {
 
       // 存在样式文件，导入样式文件，并替换 class
       } else {
-
-        this.loadModule(cssPath, function (err, source, sourceMap, module) {
+        this.loadModule(cssPath, function(err, source, sourceMap, module) {
           if (err) throw err
 
-          const styls = requireFromString(source)
+          const styles = requireFromString(source)
 
           let code = templateSource
-          code = Object.keys(styls).reduce((templdate, className) => {
-            return replaceVueClassToCssModule(className, styls[className], templdate)
+          code = Object.keys(styles).reduce((template, className) => {
+            return replaceVueClassToCssModule(className, styles[className], template)
           }, templateSource)
 
-           callback(null, code)
+          callback(null, code)
         })
       }
     })
