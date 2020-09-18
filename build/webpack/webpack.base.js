@@ -13,16 +13,11 @@ module.exports = {
       {
         test: /\.vue$/,
         use: [
+          {
+            loader: path.resolve(__dirname, './loaders/vue-inject-css.js')
+          },
           'vue-loader',
           'eslint-loader'
-        ]
-      },
-      {
-        test: /\.module-html$/,
-        use: [
-          {
-            loader: path.resolve(__dirname, './loaders/module-html.js')
-          }
         ]
       },
       {

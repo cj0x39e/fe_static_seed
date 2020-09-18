@@ -1,4 +1,4 @@
-<template lang="module-html">
+<template>
   <div class="test">
     <div/>
     hihihi
@@ -29,7 +29,6 @@
 </template>
 
 <script>
-import './test.module.scss'
 import MyButton from '~/ui-components/my-button/my-button.vue'
 import MyDialog from '~/ui-components/my-dialog/my-dialog.vue'
 
