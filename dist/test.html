@@ -6,19 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
     <title>&#x6807;&#x9898;</title>
     <link rel="stylesheet" href="./css/lib/normalize.css">
+    <link rel="stylesheet" href="./css/lib/vant_2.10.css">
 
-    <link rel="stylesheet" href="./common-styles.css">
-    <link rel="stylesheet" href="./ui-components.css">
-    <link rel="stylesheet" href="./test.css">
+    <link rel="stylesheet" href="./css/common-styles.css">
+    <link rel="stylesheet" href="./css/ui-components.css">
+    <link rel="stylesheet" href="./css/js-component.css">
+    <link rel="stylesheet" href="./css/test.css">
   </head>
 
   <body>
     <div id="app">
-      <div data-server-rendered="true" class="test_1lCP1-lW7HoL">
+      <div data-server-rendered="true" class="test_23rKDPvC9Rjb">
         <div></div>
         hihihi
-        compiler
-        <div class="fz_1H_ilPxGKNYR test">
+        compiler1112251135565
+        <div><span @click="isShow=true">显示1111212aaaaaaa</span> <span v-if="isShow">隐藏</span>
+          <test-button :class="'test1_JiQnEVsuAAjK'"></test-button>
+          <test-button :class="{'test_23rKDPvC9Rjb':true}"></test-button>
+          <test-button :class="{'test_23rKDPvC9Rjb':true}"></test-button>
+        </div>
+        <div>
+          <van-button :class="['test1']" class="test_23rKDPvC9Rjb">aaaa</van-button> <img src="/images/download/logo@2x.7a033f.png">
+        </div>
+        <div class="test1_JiQnEVsuAAjK fz_1H_ilPxGKNYR test">
           <div class="ab_1LCRVl34EZP4">45564</div>
         </div> <img src="data:image/jpeg;base64,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">
         <div class="fz_3-Cu8__SpkWn">
@@ -26,15 +36,12 @@
         </div>
       </div>
     </div>
-    <!--开发环境框架使用，无需关注-->
-    <script src="./common-styles.js"></script>
-    <script src="./ui-components.js"></script>
-    <script src="./test.js"></script>
-    <!--/开发环境框架使用，无需关注-->
-
     <script src="./js/lib/zepto.min.js"></script>
+    <script src="./js/lib/vue.js"></script>
+    <script src="./js/lib/vant_2.10.min.js"></script>
 
-    <script src="./test.es5.js"></script>
+    <script src="./js/js-component.js"></script>
+    <script src="./js/test.es5.js"></script>
   </body>
 
 </html>

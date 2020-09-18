@@ -1,9 +1,6 @@
 var path = require('path')
-var webpack = require('webpack')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
-const qs = require('querystring')
 
 module.exports = {
   mode: process.env.NODE_ENV,

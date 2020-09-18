@@ -1,6 +1,6 @@
 <template lang="module-html">
   <div class="bg" @click="handleClick">
-    test-button
+    test-button1
   </div>
 </template>
 

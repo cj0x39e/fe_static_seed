@@ -25,8 +25,7 @@ module.exports = async function (options) {
       })
     }
   `
-
-
+  
   try {
     await fs.writeFile(entryFileName, entryCode, 'utf-8')
     await fs.writeFile(ssrEntryFileName, ssrEntryCode, 'utf-8')

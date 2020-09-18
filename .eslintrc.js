@@ -13,7 +13,9 @@ module.exports = {
   plugins: ['fe-st'],
 
   globals: {
-    $: true
+    $: true,
+    Vue: true,
+    vant: true
   },
   // add your custom rules here
   // it is base on https://github.com/vuejs/eslint-config-vue

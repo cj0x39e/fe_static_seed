@@ -2,10 +2,9 @@
   <div class="test">
     <div/>
     hihihi
-    compiler1112
     <template v-pre>
       <div>
-        <span @click="isShow=true">显示1111212aaaaaaa</span>
+        <span @click="isShow=true">显示1111212aaaaaaa1</span>
         <span v-if="isShow">隐藏</span>
         <test-button :class="'test1'"/>
         <test-button :class=" {test: true}"/>
@@ -17,7 +16,7 @@
 
     <template v-pre>
       <div>
-        <vant-button :class="['test1']" class="test">aaaa</vant-button>
+        <van-button :class="['test1']" class="test">aaaa</van-button>
         <img src="../../asset/images/download/logo@2x.png">
         <!-- <div v-for="i of items" :key="i">{{a}}</div> -->
       </div>

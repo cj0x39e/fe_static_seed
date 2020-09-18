@@ -8,7 +8,7 @@ const SSRRenderPlugin = require('./plugins/SSRRenderPlugin')
 const { ssrEntryFileName } = require('../utils/common')
 
 module.exports = merge(baseConfig, {
-  mode: "production",
+  mode: 'production',
   entry: {
     main: ssrEntryFileName
   },

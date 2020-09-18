@@ -1,12 +1,8 @@
 const path = require('path')
 const fs = require('fs')
-const pretty = require('pretty')
+// const pretty = require('pretty')
 const { createBundleRenderer } = require('vue-server-renderer')
 const { distDir, tempDir } = require('./utils/common')
-const config = require('./utils/config')
-
-// MemoryFS
-// https://juejin.im/post/6844903693373046792
 
 module.exports = function () {
   
@@ -17,12 +13,10 @@ module.exports = function () {
 
   const context = {};
   renderer.renderToString(context, (err, html) => {
-    console.error('err', err)
     if (err) throw err
 
-    const pageName = config.getConfigByKey('pageName')
     const htmlPath = path.join(tempDir, `index.html`)
     
-    fs.writeFileSync(htmlPath, pretty(html), 'utf-8')
+    fs.writeFileSync(htmlPath, html, 'utf-8')
   })
 }

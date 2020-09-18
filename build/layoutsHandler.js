@@ -29,6 +29,7 @@ module.exports = function (data) {
         $('head').append(`
           <link rel="stylesheet" href="./${constants.COMMON_STYLES}.css" />
           <link rel="stylesheet" href="./${constants.UI_COMPONENTS}.css" />
+          <link rel="stylesheet" href="./js-component.css" />
           <link rel="stylesheet" href="./${pageName}.css" />
         `)
 
@@ -46,7 +47,7 @@ module.exports = function (data) {
         `)
 
         // 需要放在 body 的最后
-        $('body').append(`<script src="./jscomponent.js"></script>`)
+        $('body').append(`<script src="./js-component.js"></script>`)
         $('body').append(`<script src="./${pageName}.es5.js"></script>`)
       }
 
@@ -54,12 +55,14 @@ module.exports = function (data) {
         $('head').append(`
           <link rel="stylesheet" href="./css/${constants.COMMON_STYLES}.css" />
           <link rel="stylesheet" href="./css/${constants.UI_COMPONENTS}.css" />
+          <link rel="stylesheet" href="./css/js-component.css" />
           <link rel="stylesheet" href="./css/${pageName}.css" />
         `)
 
         // https://ssr.vuejs.org/zh/guide/#using-a-page-template
-        $('body').prepend('<!--vue-ssr-outlet-->')
-        $('body').append(`<script src="./js/jscomponent.js"></script>`)
+        $('body').prepend('<div id="app"><!--vue-ssr-outlet--></div>')
+
+        $('body').append(`<script src="./js/js-component.js"></script>`)
         $('body').append(`<script src="./js/${pageName}.es5.js"></script>`)
       }
 

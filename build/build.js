@@ -2,19 +2,28 @@
  * 编译脚本
  */
 const path = require('path')
-const shellEnhance = require('./utils/shellEnhance');
+ const webpack = require('webpack') 
+const buildConfig = require('./webpack/webpack.build')
+const ssrConfig = require('./webpack/webpack.ssr')
 const frontTask = require('./frontTask');
 
  
-
 async function main () {
   await frontTask()
 
-  const configPath = path.join(__dirname, './webpack/webpack.build.js');
-  shellEnhance.exec(`npx cross-env NODE_ENV=production  webpack --config ${configPath}`)
+  const startBuild = () => {
+    const buildCompiler = webpack(buildConfig)
+    buildCompiler.run((err, stats) => {
+      if (err) throw err
+    })
+  }
 
-  const ssrConfigPath = path.join(__dirname, './webpack/webpack.ssr.js');
-  shellEnhance.exec(`npx cross-env NODE_ENV=production  webpack --config ${ssrConfigPath}`)
+  // ssr 
+  const ssrCompiler = webpack(ssrConfig)
+  ssrCompiler.run((err, stats) => {
+    if (err) throw err
+    startBuild()
+  })
 }
 
 main()

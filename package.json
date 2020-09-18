@@ -13,7 +13,6 @@
     "webpack": "^4.44.1"
   },
   "scripts": {
-    "dev1": "cross-env NODE_ENV=development node ./build/start.js && cross-env NODE_ENV=development webpack-dev-server --config ./build/webpack/webpack.ssr.js",
     "dev": "cross-env NODE_ENV=development node ./build/start.js",
     "build": "cross-env NODE_ENV=production node ./build/build.js"
   },

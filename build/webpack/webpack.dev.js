@@ -12,7 +12,7 @@ module.exports = merge(baseConfig, optimizationConfig, {
   mode: 'development',
   entry: {
     [pageName]: entryFileName,
-    'jscomponent': path.resolve(__dirname, '../jsComponentEntry.js')
+    'js-component': path.resolve(__dirname, '../jsComponentEntry.js')
   },
   externals: {
     vue: 'Vue'
@@ -24,18 +24,19 @@ module.exports = merge(baseConfig, optimizationConfig, {
     new HtmlWebpackPlugin({
       template: path.join(tempDir, '/index.html'),
       inject: false
-    }),
-    new webpack.NamedModulesPlugin()
+    })
   ],
   devServer: {
     contentBase: path.resolve(__dirname, '../../static/'),
-    // publicPath: `/${name}/`,
     hot: false,
     host: '0.0.0.0',
     port: 1024,
     open: true,
     compress: true,
-    // stats: 'errors-only',
+    stats: 'errors-only',
+    watchOptions: {
+      aggregateTimeout: 500 // 估计值，等待 ssr 编译完成之后再进行重新编译
+    },
     // 配置 host 为 0.0.0.0 后，不配置 public 在 windows 上默认打开的地址无法访问
     // 所以配置这个解决，参考 https://github.com/webpack/webpack-dev-server/issues/1204
     public: `localhost:${1024}`
