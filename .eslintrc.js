@@ -10,8 +10,6 @@ module.exports = {
     es6: true
   },
   extends: ['plugin:vue/recommended', 'eslint:recommended'],
-  plugins: ['fe-st'],
-
   globals: {
     $: true,
     Vue: true,
@@ -20,7 +18,6 @@ module.exports = {
   // add your custom rules here
   // it is base on https://github.com/vuejs/eslint-config-vue
   rules: {
-    'fe-st/no-vue-blacklist-property': 'error',
     'vue/max-attributes-per-line': [2, {
       'singleline': 10,
       'multiline': {
