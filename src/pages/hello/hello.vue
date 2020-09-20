@@ -3,6 +3,8 @@
     <div class="title">欢迎使用 STATIC VUE !</div>
     <div class="sub-title">ui components 示例</div>
     <hello-nav />
+    <div class="sub-title">图片示例</div>
+    <img src="../../asset/images/china@2x.jpg">
     <div />
     <template v-pre>
       <div class="sub-title">js components 示例</div>
