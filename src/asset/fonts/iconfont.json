@@ -1,0 +1,16 @@
+{
+  "id": "2081213",
+  "name": "hello",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "9927997",
+      "name": "welcome",
+      "font_class": "welcome",
+      "unicode": "e646",
+      "unicode_decimal": 58950
+    }
+  ]
+}

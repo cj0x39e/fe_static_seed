@@ -5,6 +5,8 @@
     <hello-nav />
     <div class="sub-title">图片示例</div>
     <img src="../../asset/images/china@2x.jpg">
+    <div class="sub-title">字体展示</div>
+    <div class="iconfont iconwelcome" />
     <div />
     <template v-pre>
       <div class="sub-title">js components 示例</div>
