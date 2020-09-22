@@ -9,7 +9,11 @@ module.exports = {
     node: true,
     es6: true
   },
-  extends: ['plugin:vue/recommended', 'eslint:recommended'],
+  extends: [
+    'plugin:tuliu/staticvue',
+    'plugin:vue/recommended',
+    'eslint:recommended'
+  ],
   globals: {
     $: true,
     Vue: true,

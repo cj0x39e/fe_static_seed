@@ -20,7 +20,6 @@
 
 <script>
 import HelloNav from '~/ui-components/hello-nav/hello-nav.vue'
-
 export default {
   components: {
     HelloNav

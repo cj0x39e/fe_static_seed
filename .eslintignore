@@ -1,5 +1,4 @@
-build/*.js
+.tuliu
 src/assets
-public
 dist
 static
